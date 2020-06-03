@@ -31,8 +31,7 @@ export class AddTask extends Component {
 
     onAcceptClick(e){
         if(this.state.task !== ""){
-            localStorage.setItem(localStorage.length.toString(), this.state.task)
-            this.state.updateParent(localStorage.length)
+            this.state.updateParent("add", this.state.task)
             this.setState({isOpen : false})
         }
     }

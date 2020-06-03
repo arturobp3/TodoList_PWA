@@ -6,47 +6,50 @@ export class Task extends Component {
         super(props)
         this.state = {
             isOpen: false,
-            keyLocalStorage: props.keyLocalStorage,
-            text: localStorage.getItem(props.keyLocalStorage),
-            updateParent: props.updateParent,
+            text: props.text,
         }
-        this.handleChange = this.handleChange.bind(this);
     }
 
+ 
     render() {
         if(this.state.isOpen){
             return html`
-                <input type="text" value=${this.state.text} onChange=${this.handleChange} />
+                <input type="text" onChange=${this.handleChange.bind(this)} value=${this.state.text} /> 
                 <button onclick=${ this.onRemoveClick.bind(this) }> Eliminar </button>
                 <button onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
                 <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>`
         } else {
-            return html`<button onclick=${ this.taskClick.bind(this) } > ${this.state.text} </button>`
+            return html`<button onclick=${ this.taskClick.bind(this) }> ${this.state.text} </button>`
        }
     }
 
+    /*TODO: Funciona mal. la idea aquí sería tener el texto que se muestra y luego otro campo
+    * para lo que se está escribiendo. Si no el cancelar cambia el texto del botón
+    */
     handleChange(e){
         this.setState({text: e.target.value})
     }
 
+
+    //TODO: No se borra apropiadamente. Me vale verga el hombre que inventó JS y los bind
     onRemoveClick(e){
-        localStorage.removeItem(this.state.keyLocalStorage)
-        this.state.updateParent(localStorage.length)
+        //this.state.updateParent("delete", this.state.text)
+        this.props.onRemoveClick(this.state.text)
         this.setState({isOpen : false})
+        e.preventDefault();
     }
 
     onAcceptClick(e){
-
         if(this.state.text !== ""){
-            localStorage.setItem(this.state.keyLocalStorage, this.state.text)
-            this.state.updateParent(localStorage.length)
+            this.props.onAcceptClick(this.state.text)
             this.setState({isOpen : false})
         }
+        e.preventDefault();
     }
 
     onCancelClick(e){
-        this.state.text = localStorage.getItem(this.state.keyLocalStorage)
         this.setState({isOpen : false})
+        e.preventDefault();
     }
 
     taskClick(e) {
