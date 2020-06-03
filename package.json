@@ -1,0 +1,24 @@
+{
+  "name": "TodoList_PWA",
+  "version": "1.0.0",
+  "description": "This is just a to-do list developed as a Progressive Web App with the fastest alternative to React: Preact.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturobp3/TodoList_PWA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arturobp3/TodoList_PWA/issues"
+  },
+  "display": "standalone",
+  "homepage": "https://github.com/arturobp3/TodoList_PWA#readme",
+  "devDependencies": {
+    "workbox-cli": "^5.1.3"
+  }
+}
