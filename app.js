@@ -84,14 +84,24 @@ class ToDoList extends Component {
                     <${AddTask} updateParent=${this.updateGUI.bind(this)} name="Añadir tarea" />
                 </div>
                 <div id="areaInf">
-                    <${DisplayTasks} 
-                        onRemoveClick=${this.onRemoveClick.bind(this)}
-                        onAcceptClick=${this.onAcceptClick.bind(this)}
-                        onCancelClick=${this.onCancelClick.bind(this)} 
-                        items=${this.state.items} 
-                    />
+                    ${this.state.items.map( todo => (
+                        this.renderTask(todo)
+                    ))}
                 </div>
-            </div>` 
+            </div>`
+    }
+
+    renderTask(task) {
+        return html`
+        <div key=${task}>
+            <${Task}
+                onRemoveClick=${ this.onRemoveClick.bind(this, task) }
+                onAcceptClick=${ this.onAcceptClick.bind(this) }
+                onCancelClick=${ this.onCancelClick.bind(this, task) } 
+                text=${task}
+            /> 
+        </div>
+        `
     }
 }
 

@@ -42,13 +42,7 @@ export class AddTask extends Component {
 
     addTaskClick(e) {
         e.preventDefault()
-        switch(this.state.isOpen) {
-            case true:
-                this.setState({isOpen : false})
-                break
-            case false:
-                this.setState({isOpen : true})
-                break
-        }
+        
+        this.setState({isOpen : !this.state.isOpen})
     }
 }

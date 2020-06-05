@@ -7,10 +7,10 @@ export class Task extends Component {
         this.state = {
             isOpen: false,
             text: props.text,
+            newText: props.text
         }
     }
 
- 
     render() {
         if(this.state.isOpen){
             return html`
@@ -20,47 +20,38 @@ export class Task extends Component {
                 <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>`
         } else {
             return html`<button onclick=${ this.taskClick.bind(this) }> ${this.state.text} </button>`
-       }
+        }
     }
 
-    /*TODO: Funciona mal. la idea aquí sería tener el texto que se muestra y luego otro campo
-    * para lo que se está escribiendo. Si no el cancelar cambia el texto del botón
-    */
     handleChange(e){
-        this.setState({text: e.target.value})
+        this.setState({newText: e.target.value})
     }
 
-
-    //TODO: No se borra apropiadamente. Me vale verga el hombre que inventó JS y los bind
+    
     onRemoveClick(e){
-        //this.state.updateParent("delete", this.state.text)
         this.props.onRemoveClick(this.state.text)
         this.setState({isOpen : false})
         e.preventDefault();
     }
 
     onAcceptClick(e){
-        if(this.state.text !== ""){
-            this.props.onAcceptClick(this.state.text)
-            this.setState({isOpen : false})
+        if(this.state.newText !== ""){
+            this.props.onAcceptClick(this.state.newText)
+            this.setState({isOpen: false})
+            this.setState({text: this.state.newText})    
         }
         e.preventDefault();
     }
 
     onCancelClick(e){
-        this.setState({isOpen : false})
+        this.setState({isOpen: false})
+        e.target.value = this.state.text
         e.preventDefault();
     }
 
     taskClick(e) {
         e.preventDefault()
-        switch(this.state.isOpen) {
-            case true:
-                this.setState({isOpen : false})
-                break
-            case false:
-                this.setState({isOpen : true})
-                break
-        }
+
+        this.setState({isOpen : !this.state.isOpen})
     }
 }

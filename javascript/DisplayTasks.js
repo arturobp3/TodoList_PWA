@@ -18,7 +18,7 @@ import { Task } from './Task.js'
 
 
 export class DisplayTasks extends Component {
-
+    
     render(){
         return this.props.items.map( todo => (
             html`<${Task} 
