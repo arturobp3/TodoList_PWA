@@ -18,10 +18,12 @@ export class AddTask extends Component {
             return html`
                 <button> ${this.state.name} </button>
                 <input type="text" onChange=${this.handleChange} placeholder="Escribe aquí tu tarea" />
-                <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
-                <button onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>`
+                <div class="addbuttons">
+                    <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
+                    <button onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
+                </div>`
         } else {
-            return html`<button onclick=${ this.addTaskClick.bind(this) }> ${this.state.name} </button>`
+            return html`<button class="orange" onclick=${ this.addTaskClick.bind(this) }> ${this.state.name} </button>`
         }
     }
 

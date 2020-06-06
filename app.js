@@ -79,6 +79,10 @@ class ToDoList extends Component {
     render(){
         console.log("Render: " + this.state.items)
 
+        if(!Array.isArray(this.state.items)) {
+            this.state.items = []
+        }
+
         return html`
             <h1>Lista de Tareas</h1>
             <div id="tasksContainer">
@@ -95,7 +99,7 @@ class ToDoList extends Component {
 
     renderTask(task) {
         return html`
-        <div key=${task.id}>
+        <div class="task" key=${task.id}>
             <${Task}
                 onRemoveClick=${ this.onRemoveClick.bind(this, task) }
                 onSaveClick=${ this.onSaveClick.bind(this) }

@@ -7,7 +7,7 @@ export class Task extends Component {
         this.state = {
             isOpen: false,
             task: props.task,
-            newText: props.text
+            newText: props.task.text
         }
     }
 
@@ -15,9 +15,11 @@ export class Task extends Component {
         if(this.state.isOpen){
             return html`
                 <input type="text" onChange=${this.handleChange.bind(this)} value=${this.state.task.text} /> 
-                <button onclick=${ this.onRemoveClick.bind(this) }> Eliminar </button>
-                <button onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
-                <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>`
+                <div class="buttons">
+                <button class="taskbutton" onclick=${ this.onRemoveClick.bind(this) }> Eliminar </button>
+                <button class="taskbutton" onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
+                <button class="taskbutton" onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
+                </div>`
         } else {
             return html`<button onclick=${ this.taskClick.bind(this) }> ${this.state.task.text} </button>`
         }
@@ -26,7 +28,6 @@ export class Task extends Component {
     handleChange(e){
         this.setState({newText: e.target.value})
     }
-
     
     onRemoveClick(e){
         this.props.onRemoveClick(this.state.task)
@@ -35,10 +36,10 @@ export class Task extends Component {
     }
 
     onAcceptClick(e){
-        if(this.state.newText !== ""){
-            this.props.onSaveClick({id: this.state.task.id, text: this.state.newText})
-            this.setState({isOpen: false})
-            this.setState({text: this.state.newText})    
+        if(this.state.newText !== "" && this.state.newText !== this.state.task.text){
+            let newTask = {id: this.state.task.id, text: this.state.newText}
+            this.props.onSaveClick(newTask)
+            this.setState({isOpen: false, task: newTask})
         }
         e.preventDefault();
     }

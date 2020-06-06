@@ -1,0 +1,71 @@
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+.buttons {
+    padding-top: 0.5%;
+}
+
+.taskbutton {
+    padding: 2%;
+}
+
+.task {
+    padding-top: 1%;
+}
+
+.orange {
+    border: orange 1px solid;
+}
+
+.addbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box; 
+}
+
+input:focus {
+    border: orange 2px solid;
+    background-color: lightyellow;
+    outline: none;
+}
+
+#areaSup {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: lightblue;
+    padding: .5em;
+}
+
+#areaSup > * {
+    margin: .25em 0 .25em 0;
+}
+
+#areaInf {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: lightgreen;
+    padding: .5em;
+    margin-top: 1em;
+    border-radius: .25em 1em;
+}
+
+#areaInf > * {
+    margin: .5em 0 .25em 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: .25em;
+}
