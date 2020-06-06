@@ -16,14 +16,14 @@ export class AddTask extends Component {
     render() {
         if(this.state.isOpen){
             return html`
-                <button> ${this.state.name} </button>
-                <input type="text" onChange=${this.handleChange} placeholder="Escribe aquí tu tarea" />
+                <button class="addTask"> ${this.state.name} </button>
+                <input id="addTaskText" type="text" onChange=${this.handleChange} placeholder="Escribe aquí tu tarea" />
                 <div class="addbuttons">
-                    <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
-                    <button onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
+                    <button class="buttons" onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
+                    <button class="buttons" onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
                 </div>`
         } else {
-            return html`<button class="orange" onclick=${ this.addTaskClick.bind(this) }> ${this.state.name} </button>`
+            return html`<button class="addTask" onclick=${ this.addTaskClick.bind(this) }> ${this.state.name} </button>`
         }
     }
 

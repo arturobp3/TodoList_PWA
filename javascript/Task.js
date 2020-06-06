@@ -14,14 +14,19 @@ export class Task extends Component {
     render() {
         if(this.state.isOpen){
             return html`
-                <input type="text" onChange=${this.handleChange.bind(this)} value=${this.state.task.text} /> 
-                <div class="buttons">
-                <button class="taskbutton" onclick=${ this.onRemoveClick.bind(this) }> Eliminar </button>
-                <button class="taskbutton" onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
-                <button class="taskbutton" onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
+                <div class="tasks">
+                    <input id="addTaskText" onChange=${this.handleChange.bind(this)} value=${this.state.task.text} /> 
+                    <div class="buttons">
+                        <button onclick=${ this.onRemoveClick.bind(this) }> Eliminar </button>
+                        <button onclick=${ this.onCancelClick.bind(this) }> Cancelar </button>
+                        <button onclick=${ this.onAcceptClick.bind(this) }> Guardar </button>
+                    </div>
                 </div>`
         } else {
-            return html`<button onclick=${ this.taskClick.bind(this) }> ${this.state.task.text} </button>`
+            return html`
+                <div class="tasks">
+                    <button class="task" onclick=${ this.taskClick.bind(this) }> ${this.state.task.text} </button>
+                </div>`
         }
     }
 

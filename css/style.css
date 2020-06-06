@@ -1,26 +1,22 @@
-body {
-    background-color: lightgoldenrodyellow;
-}
-
-.task {
-    padding-top: 1%;
-}
-
-.orange {
-    border: orange 1px solid;
-}
-
-.addbuttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-input {
-    width: 100%;
+* {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box; 
     box-sizing: border-box; 
+    font-family: "ABeeZee";
+}
+
+html {
+    height: 95%;
+}
+
+body {
+    background-color: white;
+    min-height: 100%;
+    margin: 0;
+}
+
+button {
+    font-size: 18px;
 }
 
 input:focus {
@@ -29,35 +25,73 @@ input:focus {
     outline: none;
 }
 
-#areaSup {
+.addTask {
+    padding: 1%;
+    background: #DFE3EE;
+}
+
+.addbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tasks{
     display: flex;
     flex-direction: column;
-    width: 30%;
-    background-color: lightblue;
-    padding: .5em;
-}
-
-#areaSup > * {
-    margin: .25em 0 .25em 0;
-}
-
-#areaInf {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    background-color: lightgreen;
-    padding: .5em;
-    margin-top: 1em;
-    border-radius: .25em 1em;
-}
-
-#areaInf > * {
-    margin: .5em 0 .25em 0;
+    justify-content: space-between;
 }
 
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: .25em;
+    margin: 1%;
 }
+
+.task {
+    background-color: #3B5998;
+    color: white;
+    padding: 1%;
+}
+
+
+
+#tasksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+#areaSup {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 2%;
+    background-color: #F7F7F7;
+}
+
+#addTaskText {
+    padding: 1%;
+    font-size: 15px;
+}
+
+#areaSup > * {
+    margin: 1% 0 1% 0;
+}
+
+#areaInf {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 70%;
+    background-color: #DFE3EE;
+    padding: 2%;
+    margin-top: 1%;
+}
+
+#areaInf > * {
+    margin: 1% 0 1% 0;
+}
+

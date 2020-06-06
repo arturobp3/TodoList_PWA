@@ -18,6 +18,23 @@
   },
   "display": "standalone",
   "homepage": "https://github.com/arturobp3/TodoList_PWA#readme",
+  "short_name": "To Do List",
+  "icons": [
+    {
+      "src": "/icons/todolist_256px.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/icons/todolist_512px.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "scope": "/",
   "devDependencies": {
     "workbox-cli": "^5.1.3"
   }
