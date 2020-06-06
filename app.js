@@ -22,9 +22,7 @@
 
 import { html, render, Component } from 'https://unpkg.com/htm/preact/standalone.module.js'
 import { AddTask } from './javascript/AddTask.js'
-import { Task } from './javascript/Task.js'
-import { DisplayTasks } from './javascript/DisplayTasks.js'
- 
+import { Task } from './javascript/Task.js' 
 
 class ToDoList extends Component {
 
@@ -46,11 +44,15 @@ class ToDoList extends Component {
         let value = this.state.items //= JSON.parse(localStorage.getItem("tasks"))
 
         if(operation === "add"){
-            value.push(task)
+            let newTask = {id: this.generateKey(task), text: task}
+
+            value.push(newTask)
         } else if (operation === "delete"){
             value = this.state.items.filter((_item) => {
-                return _item != task
+                return _item.id != task.id
             })
+        } else if (operation === "update") {
+            value.find(_item => _item.id == task.id).text = task.text
         }
 
         localStorage.setItem("tasks", JSON.stringify(value))
@@ -64,9 +66,9 @@ class ToDoList extends Component {
         this.updateGUI("delete", textToBeRemoved)
     }
 
-    onAcceptClick(textToBeAdded){
-        if(textToBeAdded !== ""){
-            this.updateGUI("add", textToBeAdded)
+    onSaveClick(taskToUpdate){
+        if(taskToUpdate.text !== ""){
+            this.updateGUI("update", taskToUpdate)
         }
     }
 
@@ -93,16 +95,19 @@ class ToDoList extends Component {
 
     renderTask(task) {
         return html`
-        <div key=${task}>
+        <div key=${task.id}>
             <${Task}
                 onRemoveClick=${ this.onRemoveClick.bind(this, task) }
-                onAcceptClick=${ this.onAcceptClick.bind(this) }
-                onCancelClick=${ this.onCancelClick.bind(this, task) } 
-                text=${task}
+                onSaveClick=${ this.onSaveClick.bind(this) }
+                onCancelClick=${ this.onCancelClick.bind(this, task.text) } 
+                task=${task}
             /> 
         </div>
         `
     }
+
+    generateKey = (task) => {
+        return `${ task }_${ new Date().getTime() }`};
 }
 
    
