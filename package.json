@@ -21,12 +21,12 @@
   "short_name": "To Do List",
   "icons": [
     {
-      "src": "/icons/todolist_256px.png",
+      "src": "https://arturobp3.github.io/TodoList_PWA/icons/todolist_256px.png",
       "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "/icons/todolist_512px.png",
+      "src": "https://arturobp3.github.io/TodoList_PWA/icons/todolist_512px.png",
       "type": "image/png",
       "sizes": "512x512"
     }
