@@ -1,5 +1,5 @@
 
-import { html, render, Component } from 'https://unpkg.com/htm/preact/standalone.module.js'
+import { html, render, Component } from './javascript/preact.js'
 import { AddTask } from './javascript/AddTask.js'
 import { Task } from './javascript/Task.js' 
 
