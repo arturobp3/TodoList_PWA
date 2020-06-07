@@ -46,6 +46,7 @@ export class Task extends Component {
             this.props.onSaveClick(newTask)
             this.setState({isOpen: false, task: newTask})
         }
+        this.setState({isOpen: false})
         e.preventDefault();
     }
 
