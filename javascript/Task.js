@@ -45,8 +45,9 @@ export class Task extends Component {
             let newTask = {id: this.state.task.id, text: this.state.newText}
             this.props.onSaveClick(newTask)
             this.setState({isOpen: false, task: newTask})
+        } else {
+            this.setState({isOpen: false})
         }
-        this.setState({isOpen: false})
         e.preventDefault();
     }
 
