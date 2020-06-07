@@ -1,4 +1,4 @@
-import { html, render, Component } from 'https://unpkg.com/htm/preact/standalone.module.js'
+import { html, render, Component } from './preact'
 
 export class AddTask extends Component {
 
