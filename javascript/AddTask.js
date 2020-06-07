@@ -1,4 +1,4 @@
-import { html, render, Component } from './preact'
+import { html, render, Component } from './preact.js'
 
 export class AddTask extends Component {
 
